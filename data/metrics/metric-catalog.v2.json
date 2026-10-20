@@ -1,0 +1,91 @@
+{
+  "schema_version": "metric-catalog/v2",
+  "metrics": [
+    {
+      "name": "exploratory_task_utility_v1",
+      "source": "utility",
+      "direction": "maximize",
+      "primary": true,
+      "normalizer": {"kind": "fixed", "value": 1.0},
+      "weight": 1.0,
+      "cap": 1.0
+    },
+    {
+      "name": "a1_relative_error_utility",
+      "source": "metric_values.a1_relative_error_utility",
+      "direction": "maximize",
+      "primary": false,
+      "normalizer": {"kind": "fixed", "value": 1.0},
+      "weight": 0.25,
+      "cap": 1.0
+    },
+    {
+      "name": "a2_structural_spearman_rho",
+      "source": "metric_values.a2_structural_spearman_rho",
+      "direction": "maximize",
+      "primary": false,
+      "normalizer": {"kind": "fixed", "value": 1.0},
+      "weight": 0.25,
+      "cap": 1.0
+    },
+    {
+      "name": "b_brier_utility",
+      "source": "metric_values.b_brier_utility",
+      "direction": "maximize",
+      "primary": false,
+      "normalizer": {"kind": "fixed", "value": 1.0},
+      "weight": 0.25,
+      "cap": 1.0
+    },
+    {
+      "name": "c_mape_utility",
+      "source": "metric_values.c_mape_utility",
+      "direction": "maximize",
+      "primary": false,
+      "normalizer": {"kind": "fixed", "value": 1.0},
+      "weight": 0.25,
+      "cap": 1.0
+    }
+  ],
+  "utility": {
+    "name": "exploratory_task_utility_v1",
+    "kind": "category_weighted",
+    "range": [-1.0, 1.0],
+    "category_weights": {"A1": 0.25, "A2": 0.25, "B": 0.25, "C": 0.25},
+    "predictive_categories": ["A1", "A2", "B", "C"],
+    "controls": {"D": "null_utility_control", "E": "null_utility_control"},
+    "missing_policy": "explicit_exclusion_reason_not_zero",
+    "matched_set": "pairwise_common_matched_set"
+  },
+  "categories": {
+    "A1": {
+      "formula": "clip(1-mean(relative_error_30,relative_error_90,relative_error_180,relative_error_365),-1,1)",
+      "required_windows_days": [30, 90, 180, 365]
+    },
+    "A2": {"formula": "structural_spearman_rho"},
+    "B": {
+      "formula": "clip(1-brier_score/0.25,-1,1)",
+      "dev_baseline": {"p_up": 0.5, "source": "frozen_dev_4_of_8"},
+      "probability_bins": [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
+    },
+    "C": {"formula": "clip(1-mape,-1,1)"},
+    "D": {"formula": "null_utility_control", "ranking_eligible": false},
+    "E": {"formula": "null_utility_control", "ranking_eligible": false}
+  },
+  "statistics": {
+    "trial_aggregation": "average_before_resampling",
+    "bootstrap": "outcome_cluster_paired",
+    "bootstrap_resamples": 10000,
+    "alpha": 0.05,
+    "p_value": "cluster_level_paired_sign_flip",
+    "multiple_testing": "holm_within_family",
+    "families": ["C1_PRIMARY", "C3_PRIMARY"],
+    "seed_namespace": "20260817|<analysis-key>"
+  },
+  "ranking_eligible": false,
+  "c2": {
+    "status": "exploratory_only",
+    "reasons": ["system_count_lt_5", "no_T2", "no_resolved_T3"],
+    "correlations": null
+  }
+}

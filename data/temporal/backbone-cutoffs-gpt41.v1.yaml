@@ -1,0 +1,8 @@
+schema_version: backbone-cutoffs/v1
+models:
+  - backbone_id: openai:gpt-4.1-2025-04-14
+    training_data_cutoff: 2024-06-01
+    precision: day
+    source: https://developers.openai.com/api/docs/models/gpt-4.1
+    declared_at: '2026-08-18T05:22:00Z'
+    notes: Vendor-documented knowledge cutoff; treated as the parametric-exposure boundary by explicit research assumption, not a vendor-verified training-data claim.

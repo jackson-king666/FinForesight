@@ -1,0 +1,57 @@
+{
+  "boolean_eligibility_contract": "json_boolean_only_nested_eligible",
+  "collector_reviewer_must_differ": true,
+  "dataset_lock": {
+    "repo_id": "sselaine27/benchmark-research",
+    "revision": "951edec3021353bf1f0db23a49cf8596a7148490",
+    "tree_sha": "410c6c450abd5df4d73d6827004dd12a1cbf0c1b"
+  },
+  "dataset_lock_sha256": "cdc11d3e036f849c42650fe9f39990c7c5890edebc1be9700bb9f8cd4a092c06",
+  "design_lock": {
+    "b_status": "EXPLORATORY_ONLY",
+    "c_excluded": true,
+    "current_data_status": "CURRENT_DATA_INELIGIBLE",
+    "excluded_categories": [
+      "A2-F",
+      "A2-H",
+      "B-MACRO",
+      "C",
+      "D",
+      "E"
+    ],
+    "scope_categories": [
+      "A1",
+      "A2-T",
+      "B-EARNINGS"
+    ],
+    "task_identity_policy": "existing_task_ids_unchanged"
+  },
+  "design_lock_sha256": "161cfbe2e8fa3a6c45991bdbe8304e6454316d31dd43b5da2a3fd8803979d8eb",
+  "evidence_package_components": [
+    "task_identity",
+    "temporal_provenance",
+    "event_evidence",
+    "outcome_derivation"
+  ],
+  "required_attestation_fields": [
+    "task_id",
+    "decision",
+    "reviewer_id",
+    "review_method",
+    "reviewed_at",
+    "evidence_package_sha256",
+    "notes",
+    "attestation_sha256"
+  ],
+  "return_formula": {
+    "expression": "(post_price / pre_price - 1) - (post_benchmark_price / pre_benchmark_price - 1)",
+    "id": "excess_return_v1"
+  },
+  "review_methods": [
+    "human_first_party_live_and_snapshot",
+    "human_first_party_archive_snapshot",
+    "human_official_api_snapshot",
+    "automated_precheck_plus_human_review"
+  ],
+  "schema_version": "path-b-v2-review-contract/v1"
+}

@@ -1,0 +1,35 @@
+# Separate population. Never combine this output with one_turn_strict results.
+[dataset]
+source = "huggingface"
+repo_id = "sselaine27/benchmark-research"
+revision = "e941b978af5f8a38fbeb4670ee2d77671a5b551e"
+split = "train"
+data_dir = "../data"
+offline = false
+validate_on_preflight = true
+
+[model]
+mode = "openai_compatible"
+endpoint_env = "BENCHMARK_MODEL_ENDPOINT"
+name_env = "BENCHMARK_MODEL_NAME"
+api_key_env = "BENCHMARK_MODEL_API_KEY"
+temperature = 0.0
+max_tokens = 1024
+timeout_seconds = 60.0 # ALIYUN_TIMEOUT overrides this deployment default
+retries = 2 # BENCHMARK_MODEL_RETRIES overrides this deployment default
+
+[search_service]
+base_url = "http://127.0.0.1:8765"
+admin_token_file = "../data/search-service/admin.token"
+connect_timeout_seconds = 2.0
+request_timeout_seconds = 1800.0
+expected_service_cohort_sha256 = "77b9d73ae159d8e327a7cae3ded29091b828aa5a2b82b448533f47c5f66f8e15"
+
+[execution]
+input_policy = "agentic_web_search"
+concurrency = 1
+continue_on_error = true
+
+[trace]
+content_mode = "hash_only"
+results_dir = "../results-agentic-web-search"

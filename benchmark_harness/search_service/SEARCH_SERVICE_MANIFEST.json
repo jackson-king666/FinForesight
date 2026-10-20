@@ -1,0 +1,25 @@
+{
+  "protocol": "search_filter_http/v1",
+  "service": "SearchFilterService",
+  "transport": "FastAPI+Uvicorn",
+  "source_modules": [
+    "benchmark_harness/search_service/api.py",
+    "benchmark_harness/search_service/client.py",
+    "benchmark_harness/search_service/engine.py",
+    "benchmark_harness/search_service/server.py",
+    "benchmark_harness/search_service/state.py",
+    "benchmark_harness/search_service/lifecycle.py",
+    "benchmark_harness/profile_registry.py",
+    "benchmark_harness/search/volc.py",
+    "benchmark_harness/search/volc_core.py",
+    "benchmark_harness/search/filter.py",
+    "benchmark_harness/search/cutoff.py"
+  ],
+  "session_principal_admission": {
+    "owned_by": ["benchmark_harness/profile_registry.py", "benchmark_harness/search_service/state.py"],
+    "reject_before_side_effects": true,
+    "canonical_only": ["financeharness", "odr", "gpt-researcher"]
+  },
+  "forbidden": ["alternate_provider", "direct_fetch", "in_process_fallback", "cross_session_cache"],
+  "audit": ["search_audit", "network_ledger", "receipt_chain", "hash_only_wal"]
+}

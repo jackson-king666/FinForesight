@@ -1,0 +1,26 @@
+{
+  "schema_version": "benchmark-source-fixture/v1",
+  "system": "open_deep_research",
+  "revision": "1b7d2e80db9faa586165c60e09096dbbfd483a64",
+  "tree_sha": "3bf2795b06fbc76447511365df3b2c02743019b7",
+  "files": {
+    "src/open_deep_research/configuration.py": "ed231b6eb27b8234f657cc4167de5f1a24aee3a27c45511eb664e9b932bf9da3",
+    "src/open_deep_research/state.py": "26ec1f1edf19e5bdba756454e0de2418e330b4889169bd17b8fbf98581422fa9",
+    "src/open_deep_research/prompts.py": "d1e0c6e3064016cb8e350f82988ece9d7c56a6b65b99d7c8699b1bf431506f3e",
+    "src/open_deep_research/utils.py": "1536ea25de5210d7b37f8c81ade3348a000f43a814d4e853e1e12b3ae1de0812",
+    "src/open_deep_research/deep_researcher.py": "c5ef5c792440d6635021ec8ef85cac54da4ee5f6943a07fb26c01bed6320e231",
+    "LICENSE": "98af1351ea856e008c835bc89a312905960a318072f950732bf346c741027c7d",
+    "pyproject.toml": "57454bd01a58641b931f6879aa13030e798cfcdffe06c46ea22d606d4b667f6a"
+  },
+  "upstream_file_sha256": {
+    "src/open_deep_research/configuration.py": "61e1a62ada20d16cb7b876c10b15a3ddb71f61248a53a05d7511ca6930af98da",
+    "src/open_deep_research/state.py": "7a03f4a1d5132573ed306d403fd3478fe8916d955f3caa44a8d365877ac35d0e",
+    "src/open_deep_research/prompts.py": "239774f8444860deab0ac0d86067002ef360068ad4c1f0b698373335e6b59579",
+    "src/open_deep_research/utils.py": "1536ea25de5210d7b37f8c81ade3348a000f43a814d4e853e1e12b3ae1de0812",
+    "src/open_deep_research/deep_researcher.py": "af128d5d8773008d021b6ef7562e9fb90a45f7eb5e886483d1e6e835223275e0",
+    "LICENSE": "3404cb66935968edefe1149c9bfcb44bd8532c437c01ac095ec53b6e195ce110",
+    "pyproject.toml": "57454bd01a58641b931f6879aa13030e798cfcdffe06c46ea22d606d4b667f6a"
+  },
+  "license_file": "LICENSE",
+  "license_sha256": "98af1351ea856e008c835bc89a312905960a318072f950732bf346c741027c7d"
+}

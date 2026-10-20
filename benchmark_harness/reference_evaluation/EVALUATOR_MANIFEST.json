@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "source": {
+    "repository": "https://huggingface.co/datasets/sselaine27/benchmark-research",
+    "commit": "6c3ba942a33bb1ce941a88e4b5a78a11c3153f32",
+    "license": "CC-BY-4.0",
+    "license_evidence": "README.md YAML front matter: license: cc-by-4.0"
+  },
+  "notice_file": "NOTICE.md",
+  "frozen_file": {
+    "path": "engine.py",
+    "sha256": "c911d8146a0ca02a31ec80595b13611c94f097af21d60525bc08f447c446d50b"
+  },
+  "source_files": [
+    {
+      "path": "src/run_benchmark.py",
+      "symbols": ["parse_prediction", "evaluate_prediction", "summarize_results"],
+      "sha256": "6abf699073303fe8a549990ae1c04363211914321a0228d867804428a05ff903"
+    },
+    {
+      "path": "src/parsers/common.py",
+      "sha256": "d780ee7ddcfb245090df971e637039486d087a7053284f833c8c11cd8a6ffa87"
+    },
+    {
+      "path": "src/parsers/a1_parser.py",
+      "sha256": "b6499e04d1ef255e45b8af5a385453ae09461f962d3a4f1368dc3181ae531974"
+    },
+    {
+      "path": "src/parsers/a2_parser.py",
+      "sha256": "0bc83402dece633a1d9f84c7d89172a194f1b34a8424c8f18de9bbe0402ae1b0"
+    },
+    {
+      "path": "src/parsers/b_parser.py",
+      "sha256": "5446fdca9c9e450d838cbd341c837e3eb8cb35397e3559999cef5f0b70cb6497"
+    },
+    {
+      "path": "src/parsers/c_parser.py",
+      "sha256": "aded57196885e053826c4733e7a61ae844e4f432bedb8e52de256d0b9a134c7e"
+    },
+    {
+      "path": "src/parsers/d_parser.py",
+      "sha256": "8a6e1b3fd7ceccbc51257135026bf857b48ab53cd6e265379f6f270a51ca4dd6"
+    },
+    {
+      "path": "src/parsers/e_parser.py",
+      "sha256": "a28f85aa37662958388b7399406d3d37b9c178e3515fa58cde92a3220985ced0"
+    },
+    {
+      "path": "src/evaluators/a1_evaluator.py",
+      "sha256": "9cca3d7fc66df4f0058f8a76cb3b2499c758a7ecddccdee373bf57516315c47b"
+    },
+    {
+      "path": "src/evaluators/a2_evaluator.py",
+      "sha256": "c2056ccadbc92130270de70bef94b267db36c3efb82c3fc225d2d40c5ab32418"
+    },
+    {
+      "path": "src/evaluators/b_evaluator.py",
+      "sha256": "584192f6d784ab79c6d0f790cfaa9dd6f71a5fd8e8319923eab9c1d7d20e2bd3"
+    },
+    {
+      "path": "src/evaluators/c_evaluator.py",
+      "sha256": "761e3c2c3026c640ceeb99896dda7ae2d9974bd73caba317fe5d49304bfa24ed"
+    },
+    {
+      "path": "src/evaluators/d_evaluator.py",
+      "sha256": "340698931e871ace66361bb9ee4f0f6ac1b2a36d01fa9d37909a0ccce940e215"
+    },
+    {
+      "path": "src/evaluators/e_evaluator.py",
+      "sha256": "285ae8df134e69b116bb8c6e47429945494b9acc0510743ff11d09d34043d19a"
+    },
+    {
+      "path": "src/agents/mock_agent.py",
+      "symbols": ["mock_agent"],
+      "sha256": "b4552348482b6307ca0a51ba971316dccd616f161919bccf05b03fecffe0a9d5"
+    }
+  ]
+}

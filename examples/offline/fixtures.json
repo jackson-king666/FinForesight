@@ -1,0 +1,270 @@
+{
+  "synthetic": true,
+  "records": [
+    {
+      "category": "A1",
+      "ground_truth": {
+        "actual_prices": {
+          "30": 95,
+          "90": 105,
+          "180": 110,
+          "365": 130
+        }
+      },
+      "task_id": "synthetic-0",
+      "prompt": "Synthetic parser/evaluator example; no model execution.",
+      "cutoff_date": "2024-01-01",
+      "time_band": "T1",
+      "response": "{\"bull\": 120, \"base\": 100, \"bear\": 90, \"reversion_horizon\": \"3-6\u4e2a\u6708\"}"
+    },
+    {
+      "category": "A2",
+      "variant": "F",
+      "seed": {
+        "stock_list": [
+          {
+            "code": "A"
+          },
+          {
+            "code": "B"
+          },
+          {
+            "code": "C"
+          },
+          {
+            "code": "D"
+          },
+          {
+            "code": "E"
+          },
+          {
+            "code": "F"
+          }
+        ]
+      },
+      "ground_truth": {
+        "actual_returns": {
+          "A": 0.3,
+          "B": 0.2,
+          "C": 0.1,
+          "D": -0.1,
+          "E": -0.2,
+          "F": -0.3
+        },
+        "actual_ranking": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F"
+        ]
+      },
+      "task_id": "synthetic-1",
+      "prompt": "Synthetic parser/evaluator example; no model execution.",
+      "cutoff_date": "2024-01-01",
+      "time_band": "T1",
+      "response": "[\"A\", \"B\", \"C\", \"D\", \"E\", \"F\"]"
+    },
+    {
+      "category": "A2",
+      "variant": "T",
+      "seed": {
+        "signal_variant": "T",
+        "stock_list": [
+          {
+            "code": "T1"
+          },
+          {
+            "code": "T2"
+          },
+          {
+            "code": "T3"
+          }
+        ]
+      },
+      "ground_truth": {
+        "actual_returns": {
+          "T1": -0.1,
+          "T2": 0.1,
+          "T3": 0.2
+        },
+        "actual_ranking": [
+          "T3",
+          "T2",
+          "T1"
+        ]
+      },
+      "task_id": "synthetic-2",
+      "prompt": "Synthetic parser/evaluator example; no model execution.",
+      "cutoff_date": "2024-01-01",
+      "time_band": "T1",
+      "response": "{\"ranking\": [\"T3\", \"T2\", \"T1\"]}"
+    },
+    {
+      "category": "A2",
+      "variant": "H",
+      "seed": {
+        "signal_variant": "H",
+        "stock_list": [
+          {
+            "code": "H1"
+          },
+          {
+            "code": "H2"
+          },
+          {
+            "code": "H3"
+          }
+        ]
+      },
+      "ground_truth": {
+        "actual_returns": {
+          "H1": 0.0,
+          "H2": 0.2,
+          "H3": -0.2
+        },
+        "actual_ranking": [
+          "H2",
+          "H1",
+          "H3"
+        ]
+      },
+      "task_id": "synthetic-3",
+      "prompt": "Synthetic parser/evaluator example; no model execution.",
+      "cutoff_date": "2024-01-01",
+      "time_band": "T1",
+      "response": "[\"H2\", \"H1\", \"H3\"]"
+    },
+    {
+      "category": "A2",
+      "variant": "T",
+      "seed": {
+        "stock_list": [
+          {
+            "code": "T1"
+          },
+          {
+            "code": "T2"
+          },
+          {
+            "code": "T3"
+          }
+        ]
+      },
+      "ground_truth": {
+        "actual_returns": {
+          "T1": 0.1,
+          "T2": 0.0,
+          "T3": -0.1
+        },
+        "actual_ranking": [
+          "T1",
+          "T2",
+          "T3"
+        ]
+      },
+      "task_id": "synthetic-4",
+      "prompt": "Synthetic parser/evaluator example; no model execution.",
+      "cutoff_date": "2024-01-01",
+      "time_band": "T1",
+      "response": "not JSON at all"
+    },
+    {
+      "category": "A2",
+      "variant": "H",
+      "seed": {
+        "stock_list": [
+          {
+            "code": "H1"
+          },
+          {
+            "code": "H2"
+          },
+          {
+            "code": "H3"
+          }
+        ]
+      },
+      "ground_truth": {
+        "actual_returns": {
+          "H1": 0.1,
+          "H2": 0.0,
+          "H3": -0.1
+        },
+        "actual_ranking": [
+          "H1",
+          "H2",
+          "H3"
+        ]
+      },
+      "task_id": "synthetic-5",
+      "prompt": "Synthetic parser/evaluator example; no model execution.",
+      "cutoff_date": "2024-01-01",
+      "time_band": "T1",
+      "response": "{\"ranking\": [\"H1\", 7, \"H3\"]}"
+    },
+    {
+      "category": "B",
+      "variant": "earnings",
+      "ground_truth": {
+        "actual_direction": "up"
+      },
+      "task_id": "synthetic-6",
+      "prompt": "Synthetic parser/evaluator example; no model execution.",
+      "cutoff_date": "2024-01-01",
+      "time_band": "T1",
+      "response": "{\"direction\": \"up\", \"probability_up\": 0.8}"
+    },
+    {
+      "category": "C",
+      "seed": {
+        "metric_name": "margin"
+      },
+      "ground_truth": {
+        "future_value": 100
+      },
+      "task_id": "synthetic-7",
+      "prompt": "Synthetic parser/evaluator example; no model execution.",
+      "cutoff_date": "2024-01-01",
+      "time_band": "T1",
+      "response": "{\"predicted_value\": 90, \"metric\": \"margin\"}"
+    },
+    {
+      "category": "D",
+      "time_band": "T1",
+      "ground_truth": {
+        "logic_direction": "positive"
+      },
+      "task_id": "synthetic-8",
+      "prompt": "Synthetic parser/evaluator example; no model execution.",
+      "cutoff_date": "2024-01-01",
+      "response": "{\"direction\": \"positive\", \"reasoning\": \"test\"}"
+    },
+    {
+      "category": "E",
+      "ground_truth": {
+        "correct_answer": 10,
+        "correct_formula": "x / y",
+        "answer_unit": "%"
+      },
+      "task_id": "synthetic-9",
+      "prompt": "Synthetic parser/evaluator example; no model execution.",
+      "cutoff_date": "2024-01-01",
+      "time_band": "T1",
+      "response": "{\"formula_used\": \"x / y\", \"answer\": 10, \"unit\": \"%\"}"
+    },
+    {
+      "category": "B",
+      "variant": "earnings",
+      "ground_truth": {
+        "actual_direction": "up"
+      },
+      "task_id": "synthetic-10",
+      "prompt": "Synthetic parser/evaluator example; no model execution.",
+      "cutoff_date": "2024-01-01",
+      "time_band": "T1",
+      "response": "{\"direction\": \"sideways\", \"probability_up\": 0.5}"
+    }
+  ]
+}

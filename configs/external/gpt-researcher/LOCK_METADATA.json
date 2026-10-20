@@ -1,0 +1,32 @@
+{
+  "schema_version": "benchmark-gpt-researcher-lock/v1",
+  "source_revision": "5d84d2f5553e70a2765a8ff3a0d2672d60437ce8",
+  "source_tree_sha": "ae751c3f519cf69a72e758756d9f845960c701e9",
+  "upstream_project_sha256": "f6b7735d8d386fe6ba72ae687319e3bdc3f600aa9da55d82af954990cfeb4883",
+  "upstream_license": "MIT",
+  "upstream_license_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+  "benchmark_project_path": "configs/external/gpt-researcher/pyproject.toml",
+  "benchmark_project_sha256": "fe6cd2d15a89dfa74efc3ef3bf94c5ce0a5c7ad110d5385e6cbc0d3a8249ce04",
+  "lock_path": "configs/external/gpt-researcher/uv.lock",
+  "resolver": {
+    "name": "uv",
+    "version": "0.11.14",
+    "revision": "3fdfdc7d4"
+  },
+  "runtime": {
+    "python": "3.12",
+    "lock_interpreter": "3.12.13",
+    "requires_python": "==3.12.*"
+  },
+  "platforms": [
+    {
+      "sys_platform": "darwin",
+      "platform_machine": "arm64"
+    },
+    {
+      "sys_platform": "linux",
+      "platform_machine": "x86_64"
+    }
+  ],
+  "sync": "verify_only"
+}

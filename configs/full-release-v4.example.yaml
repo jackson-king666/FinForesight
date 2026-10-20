@@ -1,0 +1,227 @@
+schema_version: experiment/v4
+experiment_id: hua40-full-v1
+experiment_as_of: 2026-09-07
+analysis_as_of: 2026-09-07
+claim_scope: preregistered_full_experiment
+
+dataset:
+  repo_id: sselaine27/benchmark-research
+  revision: 951edec3021353bf1f0db23a49cf8596a7148490
+  release_label: current-hf-pin-951edec
+  tree_sha: 410c6c450abd5df4d73d6827004dd12a1cbf0c1b
+  tree_sha256: 410c6c450abd5df4d73d6827004dd12a1cbf0c1b
+  source_manifest_sha256: "0000000000000000000000000000000000000000000000000000000000000000"
+  record_count: 1119
+  configs:
+    a1: {category: A1, count: 244}
+    a2_f: {category: A2, variant: F, count: 112}
+    a2_t: {category: A2, variant: T, count: 161}
+    a2_h: {category: A2, variant: H, count: 110}
+    b: {category: B, count: 138}
+    c: {category: C, count: 294}
+    d: {category: D, count: 30}
+    e: {category: E, count: 30}
+
+temporal:
+  index_path: ../data/experiment-v4/temporal-index.jsonl
+  index_sha256: "0000000000000000000000000000000000000000000000000000000000000000"
+  cutoff_registry: ../data/temporal/backbone-cutoffs-gpt41mini.v1.yaml
+  cutoff_registry_sha256: 99167a1022d45a0c505073ab51e411b542910f8ac801eda0f956151b24c2b27b
+  guard_days: 30
+
+backbone:
+  backbone_id: openai:gpt-4.1-mini-2025-04-14
+  training_data_cutoff: 2024-06-01
+  cutoff_precision: day
+  cutoff_source: https://developers.openai.com/api/docs/models/gpt-4.1-mini
+  cutoff_semantics: provider_documented_knowledge_cutoff
+  cutoff_note: Documented research exposure boundary; not a verified training-corpus date.
+
+model:
+  provider: azure_openai
+  backbone_id: openai:gpt-4.1-mini-2025-04-14
+  snapshot_model_name: gpt-4.1-mini-2025-04-14
+  api_model_name: gpt-4.1-mini
+  api_model_name_semantics: azure_request_model
+  wire_name_binding: user_authorized_azure_wire_mapping/v1
+  mode: openai_compatible
+  endpoint: https://azure-resource.services.ai.azure.com/openai/v1
+  endpoint_env: BENCHMARK_MODEL_ENDPOINT
+  name_env: BENCHMARK_MODEL_NAME
+  api_key_env: BENCHMARK_MODEL_API_KEY
+  temperature: 0.2
+  top_p: 1.0
+  max_output_tokens: 32768
+  seed_derivation: int(SHA256("model-seed-v1|20260907|<cell_id>")[0:8],16)
+  backend_seed_honored: record_per_run
+
+population:
+  applicability:
+    forecast: [closed_book, cutoff_controlled, unrestricted_current_web]
+    controls: [closed_book]
+
+systems:
+  - system_id: financeharness
+    adapter: financeharness
+    config: configs/deep-research-financeharness.example.toml
+    framework_id: financeharness
+    framework_revision: c0eb9371c9299616bd39a5080377694ed960688b
+    strategy_id: financeharness-deep
+    strategy_revision: c0eb9371c9299616bd39a5080377694ed960688b
+    backbone_id: openai:gpt-4.1-mini-2025-04-14
+    backbone_training_cutoff: 2024-06-01
+    cutoff_source: https://developers.openai.com/api/docs/models/gpt-4.1-mini
+    adapter_id: financeharness-external-stdio-v2
+    adapter_revision: "2"
+    profile: deep_research
+    source_provenance: {repository: declared_external_checkout, commit: c0eb9371c9299616bd39a5080377694ed960688b}
+    license_status: UNDECLARED
+    execution_eligible: false
+    ranking_eligible: false
+    gates: {immutable_provenance: false, security_review: false, unified_backbone: false, budget_audit: false, deterministic_clock: false, controlled_search_e2e: false, license_resolved: false}
+    license_disposition: owner_review_required
+  - system_id: odr
+    adapter: open_deep_research
+    config: configs/external/README.md
+    framework_id: open_deep_research
+    framework_revision: 1b7d2e80db9faa586165c60e09096dbbfd483a64
+    strategy_id: odr-deep-research
+    strategy_revision: 1b7d2e80db9faa586165c60e09096dbbfd483a64
+    backbone_id: openai:gpt-4.1-mini-2025-04-14
+    backbone_training_cutoff: 2024-06-01
+    cutoff_source: https://developers.openai.com/api/docs/models/gpt-4.1-mini
+    adapter_id: odr-typed-host-v3
+    adapter_revision: 3b-typed-injection-v1
+    profile: deep_research
+    source_provenance: {repository: declared_external_checkout, commit: 1b7d2e80db9faa586165c60e09096dbbfd483a64}
+    license_status: MIT
+    execution_eligible: false
+    ranking_eligible: false
+    gates: {immutable_provenance: false, security_review: false, unified_backbone: false, budget_audit: false, deterministic_clock: false, controlled_search_e2e: false, license_resolved: false}
+    license_disposition: pending_execution_review
+  - system_id: gpt-researcher
+    adapter: gpt_researcher
+    config: configs/external/gpt-researcher/pyproject.toml
+    framework_id: gpt-researcher
+    framework_revision: 5d84d2f5553e70a2765a8ff3a0d2672d60437ce8
+    strategy_id: gpt-researcher-deep
+    strategy_revision: 5d84d2f5553e70a2765a8ff3a0d2672d60437ce8
+    backbone_id: openai:gpt-4.1-mini-2025-04-14
+    backbone_training_cutoff: 2024-06-01
+    cutoff_source: https://developers.openai.com/api/docs/models/gpt-4.1-mini
+    adapter_id: gpt-researcher-typed-host-v3
+    adapter_revision: 3c-custom-retriever-v1
+    profile: deep_research
+    source_provenance: {repository: declared_external_checkout, commit: 5d84d2f5553e70a2765a8ff3a0d2672d60437ce8}
+    license_status: CONFLICTING
+    execution_eligible: false
+    ranking_eligible: false
+    gates: {immutable_provenance: false, security_review: false, unified_backbone: false, budget_audit: false, deterministic_clock: false, controlled_search_e2e: false, license_resolved: false}
+    license_disposition: owner_review_required
+
+retrieval_regimes: [closed_book, cutoff_controlled, unrestricted_current_web]
+trials:
+  count: 3
+  seed: 20260907
+  order: blocked_randomized
+  model_seed_derivation: int(SHA256("model-seed-v1|20260907|<cell_id>")[0:8],16)
+budget:
+  model_calls: 32
+  searches: 8
+  visits: 12
+  other_tools: 40
+  input_tokens: 4194304
+  output_tokens: 2097152
+  wall_clock_seconds: 7200
+scheduler:
+  max_workers: 3
+  max_attempts_per_cell: 3
+  append_only: true
+
+analysis:
+  metric_catalog: ../data/metrics/metric-catalog.v2.json
+  metric_catalog_sha256: 26882d7c2900b3f5120269778fdef7c15577c4926968d0a2acc031caf4f34b9f
+  bootstrap_resamples: 10000
+  alpha: 0.05
+  primary_metric: formal_utility_v1
+  formal_utility_version: formal-utility/v1
+  category_weights: {A1: 0.25, A2: 0.25, B: 0.25, C: 0.25}
+  reliability_bins: ["[0,.1)", "[.1,.2)", "[.2,.3)", "[.3,.4)", "[.4,.5)", "[.5,.6)", "[.6,.7)", "[.7,.8)", "[.8,.9)", "[.9,1]"]
+  stats:
+    trial_aggregation: average_before_resampling
+    bootstrap: event_cluster_paired
+    multiple_testing: holm_within_family
+    seed_derivation: SHA256(experiment_id|analysis_version|category|system_pair)
+
+policy:
+  ranking_eligible: false
+  score_selection: forbidden
+  failed_output_policy: operational_brier_1_and_valid_output_rate
+  unrestricted_reporting: isolated_only
+
+provenance:
+  backbone_id: openai:gpt-4.1-mini-2025-04-14
+  snapshot_model_name: gpt-4.1-mini-2025-04-14
+  wire_model_name: gpt-4.1-mini
+  wire_name_binding: user_authorized_azure_wire_mapping/v1
+  frozen_evaluator_sha256: c911d8146a0ca02a31ec80595b13611c94f097af21d60525bc08f447c446d50b
+  evaluator_source_commit: 6c3ba942a33bb1ce941a88e4b5a78a11c3153f32
+
+cohort:
+  path: ../data/experiment-v4/cohort.jsonl
+  sha256: "0000000000000000000000000000000000000000000000000000000000000000"
+  schema: cohort-ledger/v1
+t3:
+  path: ../data/experiment-v4/t3-registry.jsonl
+  sha256: "0000000000000000000000000000000000000000000000000000000000000000"
+  schema: t3-registry/v1
+calculation_policy:
+  default: calc_on
+  e_controls: [calc_off, calc_on]
+  calculator: host_owned_pure_calculator/v1
+  closed_book_tools: forbidden
+  calc_off_equivalent_shortcuts: forbidden
+sample_plan:
+  e1: all_qualified_historical_rows
+  e2_margin: 0.1
+  e2_power: 0.8
+  brier_ci_half_width: 0.05
+  t3_min_clusters: 30
+  d_min_pairs: 30
+  e_min_cases_per_family: 10
+hypothesis_families:
+  E1: [delta_web, controlled_minus_closed, temporal_band_interaction]
+  E2: [t2_t3_equivalence, selection_loss, rank_stability]
+  E3: [three_system_leaderboard, observable_failure_rates]
+  E4: [calibration, reliability, invalid_output_rate]
+completion_rules:
+  all_planned_cells_terminal: true
+  t3_requires_pre_outcome_lock_and_settlement: true
+  b_requires_complete_four_price_chain: true
+  human_leak_review_gate_required_for_exposure_claim: true
+  ranking_requires_gate_evidence: true
+source_review:
+  reviewer_type: human
+  reviewers_required: [A, B, C]
+  raw_ab_agreement_minimum: 0.9
+  cohen_kappa_minimum: 0.8
+  adjudication_cannot_replace_raw_agreement: true
+generator:
+  repository: https://github.com/Yilinss27/benchmark-research-code
+  commit: e8e855164245843194d2ffc671abc1fc0fe5be7a
+  generator_manifest_sha256: "0000000000000000000000000000000000000000000000000000000000000000"
+supplements: []
+ranking_requested: true
+ranking_gates:
+  financeharness: {immutable_provenance: false, security_review: false, unified_backbone: false, budget_audit: false, deterministic_clock: false, controlled_search_e2e: false, license_resolved: false}
+  odr: {immutable_provenance: false, security_review: false, unified_backbone: false, budget_audit: false, deterministic_clock: false, controlled_search_e2e: false, license_resolved: false}
+  gpt-researcher: {immutable_provenance: false, security_review: false, unified_backbone: false, budget_audit: false, deterministic_clock: false, controlled_search_e2e: false, license_resolved: false}
+license_disposition:
+  financeharness: UNDECLARED_owner_review_required
+  odr: MIT_pending_execution_review
+  gpt-researcher: CONFLICTING_owner_review_required
+
+metadata:
+  release_status: design_only_until_source_and_execution_gates_pass
+  t3_status: awaiting_first_prospective_wave
+  historical_data_status: inventory_complete_repairs_pending

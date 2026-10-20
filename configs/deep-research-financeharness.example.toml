@@ -1,0 +1,64 @@
+[dataset]
+source = "huggingface"
+repo_id = "sselaine27/benchmark-research"
+revision = "e941b978af5f8a38fbeb4670ee2d77671a5b551e"
+split = "train"
+data_dir = "../data"
+offline = false
+
+[model]
+mode = "openai_compatible"
+endpoint_env = "BENCHMARK_MODEL_ENDPOINT"
+name_env = "BENCHMARK_MODEL_NAME"
+api_key_env = "BENCHMARK_MODEL_API_KEY"
+temperature = 0.0
+max_tokens = 4096
+timeout_seconds = 1800.0
+retries = 2
+
+[evaluation]
+manifest_path = "../benchmark_harness/reference_evaluation/EVALUATOR_MANIFEST.json"
+source_commit = "6c3ba942a33bb1ce941a88e4b5a78a11c3153f32"
+require_golden_parity = true
+
+[search_service]
+base_url = "http://127.0.0.1:8765"
+admin_token_file = "../data/search-service/admin.token"
+connect_timeout_seconds = 2.0
+request_timeout_seconds = 1800.0
+expected_service_cohort_sha256 = "77b9d73ae159d8e327a7cae3ded29091b828aa5a2b82b448533f47c5f66f8e15"
+
+[execution]
+input_policy = "deep_research"
+concurrency = 1
+continue_on_error = true
+
+[trace]
+content_mode = "full"
+results_dir = "../results-deep-research"
+
+[deep_research]
+mode = "research"
+grounding_review = true
+max_rounds = 24
+max_model_calls = 32
+max_search_queries = 8
+max_visit_urls = 12
+max_tool_calls = 40
+task_timeout_seconds = 1800.0
+max_frame_bytes = 8388608
+max_stderr_bytes = 1048576
+
+[external_harnesses.financeharness]
+adapter = "financeharness"
+version = "v2"
+repo_url = "https://github.com/Yijia-Xiao/FinanceHarness.git"
+revision = "c0eb9371c9299616bd39a5080377694ed960688b"
+tree_sha = "4939d3b3dec91460b76ea01731ef892bd0e9c2f0"
+uv_lock_sha256 = "1a3091a1e24a9c90d83af103e96016eb921c8d93656645be7c8a4bc8ac1e15c7"
+pyproject_sha256 = "85ac39ffd947e16ba93afbc8807bd6ceb5614a6e3f1bd909d1518280c78fa213"
+python_version = "3.12"
+protocol = "external_research_stdio/v2"
+checkout_root = "../data/external-harnesses"
+offline = false
+license_status = "UNDECLARED"

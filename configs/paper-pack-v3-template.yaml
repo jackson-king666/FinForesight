@@ -1,0 +1,59 @@
+schema_version: experiment/v3
+experiment_id: paper-v3-template
+experiment_as_of: '2026-08-17'
+claim_scope: calibration-pilot-only
+dataset:
+  repo_id: sselaine27/benchmark-research
+  revision: 941370f228b9bc03c1b8bd9547c098c42c06be23
+calibration:
+  path: data/calibration/leakage-probe/v1
+  sha256: 007514e0591a0004da9a2e1acab9b95d7558cd0f47d68306c2e4da41f7cf999f
+policy:
+  ranking_eligible_default: true
+  main_leaderboard_regime: cutoff_controlled
+  score_selection: forbidden
+  live_unrestricted_authorized: false
+retrieval_regimes:
+  - closed_book
+  - cutoff_controlled
+  - unrestricted_current_web
+systems:
+  - system_id: financeharness
+    ranking_requested: true
+    ranking_gates:
+      immutable_provenance: false
+      security_review: false
+      unified_backbone: false
+      budget_audit: false
+      deterministic_clock: false
+      controlled_search_e2e: false
+      license_resolved: false
+    comparable: false
+    artifact_complete: false
+  - system_id: odr
+    ranking_requested: true
+    ranking_gates:
+      immutable_provenance: false
+      security_review: false
+      unified_backbone: false
+      budget_audit: false
+      deterministic_clock: false
+      controlled_search_e2e: false
+      license_resolved: false
+    comparable: false
+    artifact_complete: false
+  - system_id: gpt-researcher
+    ranking_requested: true
+    ranking_gates:
+      immutable_provenance: false
+      security_review: false
+      unified_backbone: false
+      budget_audit: false
+      deterministic_clock: false
+      controlled_search_e2e: false
+      license_resolved: false
+    comparable: false
+    artifact_complete: false
+metadata:
+  status: pilot
+  unrestricted_reporting: isolated_only

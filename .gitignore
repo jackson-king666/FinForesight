@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+results*/
+dist/
+build/
+.env
+.env.*
+!.env.example
+data/.huggingface/
+data/external-harnesses/
+data/search-service/
+data/calibration-cache/
+*.log
+.wheel-venv/

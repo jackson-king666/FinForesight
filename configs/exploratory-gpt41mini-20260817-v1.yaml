@@ -1,0 +1,161 @@
+schema_version: experiment/v2
+experiment_id: exploratory-339-gpt41mini-20260817-v1
+experiment_as_of: 2026-08-17
+analysis_as_of: 2026-08-17
+claim_scope: exploratory_interface
+dataset:
+  repo_id: sselaine27/benchmark-research
+  revision: e941b978af5f8a38fbeb4670ee2d77671a5b551e
+  release_label: v0.6.0
+  record_count: 339
+  dataset_fingerprint: 6756c6192841c9d693234bbfb19d82d3b532a4706d6db177e5c1d407c8cfeb08
+  configs:
+    a1: {category: A1, count: 72}
+    a2_f: {category: A2, variant: F, count: 10}
+    a2_t: {category: A2, variant: T, count: 10}
+    a2_h: {category: A2, variant: H, count: 10}
+    b: {category: B, count: 33}
+    c: {category: C, count: 180}
+    d: {category: D, count: 12}
+    e: {category: E, count: 12}
+temporal:
+  index_path: ../data/temporal/task-temporal-index.v1.jsonl
+  index_sha256: 80d977e40e113172e778b6f78315e1fad132423c9fe9eca3ad6a5de34df4f21b
+  cutoff_registry: ../data/temporal/backbone-cutoffs-gpt41mini.v1.yaml
+  cutoff_registry_sha256: 99167a1022d45a0c505073ab51e411b542910f8ac801eda0f956151b24c2b27b
+  guard_days: 30
+split:
+  path: ../data/splits/task-splits.exploratory-v1.jsonl
+  sha256: 35da4322aabc171d30045ed75c9cc4eb1364fef7ea0633397091bbf46150a6d5
+  algorithm: outcome-clustered-sha256/v1
+  train_count: 0
+  dev_count: 78
+  test_count: 261
+backbone:
+  backbone_id: openai:gpt-4.1-mini-2025-04-14
+  training_data_cutoff: 2024-06-01
+  cutoff_precision: day
+  cutoff_source: https://developers.openai.com/api/docs/models/gpt-4.1-mini
+  cutoff_semantics: provider_documented_knowledge_cutoff
+  cutoff_note: OpenAI-documented knowledge cutoff used as the parametric-exposure boundary by explicit research assumption.
+model:
+  provider: azure_openai
+  backbone_id: openai:gpt-4.1-mini-2025-04-14
+  snapshot_model_name: gpt-4.1-mini-2025-04-14
+  api_model_name: gpt-4.1-mini
+  api_model_name_semantics: azure_request_model
+  wire_name_binding: user_authorized_azure_wire_mapping/v1
+  mode: openai_compatible
+  endpoint: https://azure-resource.services.ai.azure.com/openai/v1
+  endpoint_env: BENCHMARK_MODEL_ENDPOINT
+  name_env: BENCHMARK_MODEL_NAME
+  api_key_env: BENCHMARK_MODEL_API_KEY
+  temperature: 0.2
+  top_p: 1.0
+  max_output_tokens: 32768
+  seed_derivation: int(SHA256("model-seed-v1|20260817|<cell_id>")[0:8],16)
+  backend_seed_honored: record_per_run
+population:
+  applicability:
+    forecast: [closed_book, cutoff_controlled]
+    controls: [closed_book]
+systems:
+  - system_id: financeharness
+    adapter: financeharness
+    config: configs/deep-research-financeharness.example.toml
+    framework_id: financeharness
+    framework_revision: c0eb9371c9299616bd39a5080377694ed960688b
+    strategy_id: financeharness-deep
+    strategy_revision: c0eb9371c9299616bd39a5080377694ed960688b
+    backbone_id: openai:gpt-4.1-mini-2025-04-14
+    backbone_training_cutoff: 2024-06-01
+    cutoff_source: https://developers.openai.com/api/docs/models/gpt-4.1-mini
+    adapter_id: financeharness-external-stdio-v2
+    adapter_revision: "2"
+    profile: deep_research
+    license_status: UNDECLARED
+    execution_eligible: true
+    ranking_eligible: false
+  - system_id: odr
+    adapter: open_deep_research
+    config: configs/external/README.md
+    framework_id: open_deep_research
+    framework_revision: 1b7d2e80db9faa586165c60e09096dbbfd483a64
+    strategy_id: odr-deep-research
+    strategy_revision: 1b7d2e80db9faa586165c60e09096dbbfd483a64
+    backbone_id: openai:gpt-4.1-mini-2025-04-14
+    backbone_training_cutoff: 2024-06-01
+    cutoff_source: https://developers.openai.com/api/docs/models/gpt-4.1-mini
+    adapter_id: odr-typed-host-v3
+    adapter_revision: 3b-typed-injection-v1
+    profile: deep_research
+    license_status: MIT
+    execution_eligible: true
+    ranking_eligible: false
+  - system_id: gpt-researcher
+    adapter: gpt_researcher
+    config: configs/external/gpt-researcher/pyproject.toml
+    framework_id: gpt-researcher
+    framework_revision: 5d84d2f5553e70a2765a8ff3a0d2672d60437ce8
+    strategy_id: gpt-researcher-deep
+    strategy_revision: 5d84d2f5553e70a2765a8ff3a0d2672d60437ce8
+    backbone_id: openai:gpt-4.1-mini-2025-04-14
+    backbone_training_cutoff: 2024-06-01
+    cutoff_source: https://developers.openai.com/api/docs/models/gpt-4.1-mini
+    adapter_id: gpt-researcher-typed-host-v3
+    adapter_revision: 3c-custom-retriever-v1
+    profile: deep_research
+    license_status: CONFLICTING
+    execution_eligible: true
+    ranking_eligible: false
+retrieval_regimes: [closed_book, cutoff_controlled]
+trials:
+  count: 3
+  seed: 20260817
+  order: blocked_randomized
+  model_seed_derivation: int(SHA256("model-seed-v1|20260817|<cell_id>")[0:8],16)
+budget:
+  model_calls: 32
+  searches: 8
+  visits: 12
+  other_tools: 40
+  input_tokens: 4194304
+  output_tokens: 2097152
+  wall_clock_seconds: 7200
+scheduler:
+  max_workers: 3
+  max_attempts_per_cell: 3
+  append_only: true
+analysis:
+  metric_catalog: ../data/metrics/metric-catalog.v2.json
+  metric_catalog_sha256: 26882d7c2900b3f5120269778fdef7c15577c4926968d0a2acc031caf4f34b9f
+  bootstrap_resamples: 10000
+  alpha: 0.05
+  primary_metric: exploratory_task_utility_v1
+  category_weights: {A1: 0.25, A2: 0.25, B: 0.25, C: 0.25}
+  stats:
+    trial_aggregation: average_before_resampling
+    bootstrap: outcome_cluster_paired
+    p_value: cluster_level_paired_sign_flip
+    multiple_testing: holm_within_family
+policy:
+  ranking_eligible: false
+  unrestricted_current_web: not_declared
+  live_unrestricted_authorized: false
+  score_selection: forbidden
+provenance:
+  backbone_id: openai:gpt-4.1-mini-2025-04-14
+  snapshot_model_name: gpt-4.1-mini-2025-04-14
+  wire_model_name: gpt-4.1-mini
+  wire_name_binding: user_authorized_azure_wire_mapping/v1
+  paper_context_sha256: 8b5289bf88c904aeb2de2fe2aff11d3643595f30037e27ccd4ae6702c2f501a9
+  frozen_evaluator_sha256: c911d8146a0ca02a31ec80595b13611c94f097af21d60525bc08f447c446d50b
+  evaluator_source_commit: 6c3ba942a33bb1ce941a88e4b5a78a11c3153f32
+  authorization_record: 2026-08-26T16:58:20Z
+  hub_commit_time_proxy: 2026-08-15T10:09:38Z
+  hub_commit_time_note: Conservative label-publication upper-bound proxy.
+metadata:
+  cohort: three-system-gpt41mini-live
+  future_confirmatory_minimum_systems: 5
+  test_split_governance_holdout: true
+  ranking_eligible: false

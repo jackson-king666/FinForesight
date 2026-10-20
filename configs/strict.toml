@@ -1,0 +1,28 @@
+# Strict real-endpoint profile. Endpoint/model credentials are read only from env.
+[dataset]
+source = "huggingface"
+repo_id = "sselaine27/benchmark-research"
+revision = "e941b978af5f8a38fbeb4670ee2d77671a5b551e"
+split = "train"
+data_dir = "../data"
+offline = false
+validate_on_preflight = true
+
+[model]
+mode = "openai_compatible"
+endpoint_env = "BENCHMARK_MODEL_ENDPOINT"
+name_env = "BENCHMARK_MODEL_NAME"
+api_key_env = "BENCHMARK_MODEL_API_KEY"
+temperature = 0.0
+max_tokens = 1024
+timeout_seconds = 60.0 # ALIYUN_TIMEOUT overrides this deployment default
+retries = 2 # BENCHMARK_MODEL_RETRIES overrides this deployment default
+
+[execution]
+input_policy = "one_turn_strict"
+concurrency = 1
+continue_on_error = true
+
+[trace]
+content_mode = "full"
+results_dir = "../results"

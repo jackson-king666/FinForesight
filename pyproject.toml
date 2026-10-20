@@ -1,0 +1,45 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "finforesight"
+version = "0.1.0"
+description = "FinForesight financial forecasting research framework."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Benchmark Harness Contributors" }]
+dependencies = [
+  "datasets==3.6.0",
+  "fastapi==0.139.2",
+  "langchain-openai==1.1.10",
+  "langgraph==1.2.9",
+  "pydantic-ai-slim[openai]==1.104.0",
+  "python-dotenv==1.2.2",
+  "uvicorn==0.51.0",
+  "volcengine==1.0.227",
+]
+
+[dependency-groups]
+dev = ["pytest==8.3.5", "ruff==0.11.5"]
+
+[project.scripts]
+finforesight = "benchmark_harness.cli:main"
+benchmark-harness = "benchmark_harness.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["benchmark_harness"]
+include = ["benchmark_harness/**"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+extend-exclude = ["vendor", "tests/fixtures/pinned_odr", "tests/fixtures/pinned_gpt"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]

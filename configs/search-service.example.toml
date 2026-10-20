@@ -1,0 +1,20 @@
+[service]
+protocol = "search_filter_http/v1"
+bind_host = "127.0.0.1"
+port = 8765
+state_dir = "../data/search-service"
+max_inflight_searches = 8
+queue_limit = 64
+drain_timeout_seconds = 30.0
+test_only = false
+
+[volc]
+access_key_env = "VOLC_ACCESS_KEY_ID"
+secret_key_env = "VOLC_SECRET_ACCESS_KEY"
+
+[temporal_filter_model]
+endpoint_env = "SEARCH_FILTER_MODEL_ENDPOINT"
+name_env = "SEARCH_FILTER_MODEL_NAME"
+api_key_env = "SEARCH_FILTER_MODEL_API_KEY"
+timeout_seconds = 60.0
+retries = 2

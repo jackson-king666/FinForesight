@@ -1,0 +1,8 @@
+schema_version: backbone-cutoffs/v1
+models:
+  - backbone_id: hf:deepseek-ai/DeepSeek-V4-Flash-0731@7872f01b1d1fe23eabc4c98b48bffcef5a386062
+    training_data_cutoff: 2026-07-31
+    precision: day
+    source: user_authorized_release_date_proxy
+    declared_at: '2026-08-17T17:22:11Z'
+    notes: User-authorized conservative proxy; not vendor-verified.

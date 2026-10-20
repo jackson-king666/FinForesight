@@ -1,0 +1,82 @@
+schema_version: experiment/v3
+experiment_id: score-blind-v3-r1
+claim_scope: preregistration-and-cohort-audit-only
+
+# This is a metadata contract, not a run configuration.  The v0.6/339
+# experiment manifests remain the default for executable legacy experiments.
+dataset:
+  repo_id: sselaine27/benchmark-research
+  revision: 941370f228b9bc03c1b8bd9547c098c42c06be23
+  release_label: v0.9
+  tree_sha: f020732fa58fd8c44e8c2a2afbb31d7866e4bf64
+  source_manifest_sha256: b2a14c444dfc700b2415981f08aa2ddd1240d2fcb59c780499e2f312458381ba
+  record_count: 1119
+  unique_task_count: 1119
+
+expected_eligibility:
+  T1: 33
+  T2: 136
+  A1-T1: 16
+  B-EARNINGS-T1: 17
+  B-EARNINGS-T2: 46
+  B-MACRO-T2: 13
+  C-T2: 77
+expected_b_ledger:
+  eligible: 76
+  excluded: 62
+  total: 138
+
+eligibility:
+  required_row_predicates:
+    official_temporal_eligible: true
+    review_status: reviewed
+    outcome_available_at_source_prefix: observed_
+    status: ready
+  boolean_shorthand: rejected_and_recorded
+
+states:
+  t1_t2_effect: CURRENT_DATA_INELIGIBLE
+  b_calibration: EXPLORATORY_ONLY
+  unrestricted_current_web: EXPLORATORY_ONLY
+
+matching:
+  exact_strata: [category, variant, market, metric_output_family, template_identity]
+  propensity_model: l2_logistic
+  standardized_numeric: true
+  one_hot_categorical: true
+  main_effects_only: true
+  regularization_c: 1.0
+  imputation: none
+  overlap_weights: {T1: '1-e(X)', T2: 'e(X)'}
+  propensity_bounds: [0.05, 0.95]
+  max_abs_smd: 0.10
+  min_ess: 20
+
+estimand:
+  name: t1_minus_t2_utility
+  formula: 'E_w[U|T1] - E_w[U|T2]'
+  positive_direction: T1 higher
+
+metrics:
+  brier_formula: 'mean((p-y)^2)'
+  bss_formula: '1-BS/0.25'
+  primary_baseline: 0.5
+  secondary_baseline: leave_one_out_band_prevalence
+  reliability_bins: ['[0,.2)', '[.2,.4)', '[.4,.6)', '[.6,.8)', '[.8,1]']
+  invalid_prediction_policy: operational_brier_1_and_valid_output_rate
+  bootstrap_resamples: 10000
+  bootstrap_unit: paired_event_cluster
+  bootstrap_seed: 'SHA256(dataset pin | analysis version)'
+  multiple_testing: holm_family
+
+artifacts:
+  append_only: true
+  files:
+    - dataset-lock.json
+    - eligibility-counts.json
+    - exclusions.jsonl
+    - covariates.jsonl
+    - common-support.json
+    - preregistration.json
+    - design-lock.json
+    - design-lock.sha256

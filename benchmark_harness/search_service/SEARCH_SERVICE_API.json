@@ -1,0 +1,31 @@
+{
+  "protocol": "search_filter_http/v1",
+  "content_type": "application/json",
+  "max_request_bytes": 65536,
+  "max_response_bytes": 8388608,
+  "session_principals": {
+    "wire_field": "baseline",
+    "admission": "profile_search_principal",
+    "semantics": "canonical_audit_identity_not_public_baseline",
+    "policy": "exact_canonical_only_fail_closed",
+    "profiles": {
+      "one_turn_strict": [],
+      "agentic_web_search": ["pydantic-ai", "langgraph"],
+      "deep_research": ["financeharness", "odr", "gpt-researcher"]
+    }
+  },
+  "routes": {
+    "GET /healthz": {"auth": "none"},
+    "GET /readyz": {"auth": "admin_bearer"},
+    "POST /v1/sessions": {"auth": "admin_bearer"},
+    "POST /v1/sessions/{session_id}/search": {"auth": "task_bearer"},
+    "POST /v1/sessions/{session_id}/close": {"auth": "admin_bearer"},
+    "POST /v1/admin/drain": {"auth": "admin_bearer"}
+  },
+  "request_policy": {
+    "closed_json_objects": true,
+    "redirects": false,
+    "proxy": false,
+    "loopback": "127.0.0.1"
+  }
+}

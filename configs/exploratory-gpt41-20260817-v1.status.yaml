@@ -1,0 +1,4 @@
+schema_version: experiment-lifecycle/v1
+experiment_id: exploratory-339-gpt41-20260817-v1
+status: abandoned
+superseded_by: exploratory-339-gpt41mini-20260817-v1

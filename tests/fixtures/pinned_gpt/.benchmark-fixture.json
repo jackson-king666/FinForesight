@@ -1,0 +1,42 @@
+{
+  "schema_version": "benchmark-source-fixture/v1",
+  "system": "gpt_researcher",
+  "revision": "5d84d2f5553e70a2765a8ff3a0d2672d60437ce8",
+  "tree_sha": "ae751c3f519cf69a72e758756d9f845960c701e9",
+  "files": {
+    "gpt_researcher/config/config.py": "7fc17097144052c47df888633da5884fcbeb06be211936db6673080ec1379d84",
+    "gpt_researcher/config/variables/base.py": "e70c220ccf9508130cbabac12e06f0018b80a44212e9d021a7a45adb1d200510",
+    "gpt_researcher/config/variables/default.py": "2e8c30e23ec5e06b5df383934e456e387de2a4ed0f4fbe5dfd7c6b032163daed",
+    "gpt_researcher/retrievers/custom/custom.py": "c11e44f3fea4434e8d9b568fb8d34e2f20cd0fca17000421817bffd522098972",
+    "gpt_researcher/utils/enum.py": "8f41cdeb433a02177e7217fbe21274fb37aebd516d8f0711221742a3c7414075",
+    "gpt_researcher/skills/deep_research.py": "9a5ee4eac7b8e4e0c496d02e69b99db82cfdfc6dc93525c6e530758a0a428438",
+    "gpt_researcher/prompts.py": "fe9171679addc4001961a738ace3b84d78fe434646e577d6ff9625006d483eef",
+    "gpt_researcher/scraper/scraper.py": "8d09eae218a307acc51dddbb51e13e28435088a380c1964af8d5902df141a484",
+    "gpt_researcher/skills/browser.py": "22646b1cf8cf0a9578e9b431e80aa7b51a12751c609433ab139eb3f8f094f2fc",
+    "gpt_researcher/agent.py": "845d057933aac49a1a331a8bd9a3e6d7a74dfee9066087792f9741c277a6b1e0",
+    "multi_agents/agents/writer.py": "962f85a72c0e6a6d36bbc70a20ad9d1db07161b7bfc61332aed561c8293e5845",
+    "multi_agents/agents/editor.py": "e8a6fdf42972db55fc74b7a39589493e2873d949b2ded921277064c89ab898a4",
+    "multi_agents/ag2/agents/editor.py": "f91a207466c0711a5250b11df74f80261e2f49eb5d2e2dc2a7aae58f22959ac1",
+    "LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "pyproject.toml": "f6b7735d8d386fe6ba72ae687319e3bdc3f600aa9da55d82af954990cfeb4883"
+  },
+  "upstream_file_sha256": {
+    "gpt_researcher/config/config.py": "7fc17097144052c47df888633da5884fcbeb06be211936db6673080ec1379d84",
+    "gpt_researcher/config/variables/base.py": "e70c220ccf9508130cbabac12e06f0018b80a44212e9d021a7a45adb1d200510",
+    "gpt_researcher/config/variables/default.py": "2e8c30e23ec5e06b5df383934e456e387de2a4ed0f4fbe5dfd7c6b032163daed",
+    "gpt_researcher/retrievers/custom/custom.py": "c11e44f3fea4434e8d9b568fb8d34e2f20cd0fca17000421817bffd522098972",
+    "gpt_researcher/utils/enum.py": "8f41cdeb433a02177e7217fbe21274fb37aebd516d8f0711221742a3c7414075",
+    "gpt_researcher/skills/deep_research.py": "9a5ee4eac7b8e4e0c496d02e69b99db82cfdfc6dc93525c6e530758a0a428438",
+    "gpt_researcher/prompts.py": "fe9171679addc4001961a738ace3b84d78fe434646e577d6ff9625006d483eef",
+    "gpt_researcher/scraper/scraper.py": "8d09eae218a307acc51dddbb51e13e28435088a380c1964af8d5902df141a484",
+    "gpt_researcher/skills/browser.py": "22646b1cf8cf0a9578e9b431e80aa7b51a12751c609433ab139eb3f8f094f2fc",
+    "gpt_researcher/agent.py": "845d057933aac49a1a331a8bd9a3e6d7a74dfee9066087792f9741c277a6b1e0",
+    "multi_agents/agents/writer.py": "962f85a72c0e6a6d36bbc70a20ad9d1db07161b7bfc61332aed561c8293e5845",
+    "multi_agents/agents/editor.py": "e8a6fdf42972db55fc74b7a39589493e2873d949b2ded921277064c89ab898a4",
+    "multi_agents/ag2/agents/editor.py": "f91a207466c0711a5250b11df74f80261e2f49eb5d2e2dc2a7aae58f22959ac1",
+    "LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "pyproject.toml": "f6b7735d8d386fe6ba72ae687319e3bdc3f600aa9da55d82af954990cfeb4883"
+  },
+  "license_file": "LICENSE",
+  "license_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+}
